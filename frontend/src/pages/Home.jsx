@@ -9,7 +9,7 @@ import BooksView from '../components/home/ViewControls';
 
 export default function Home() {
   const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [showType, setShowType] = useState('table');
 
   useEffect(() => {
@@ -17,7 +17,9 @@ export default function Home() {
     axios.get('http://localhost:5000/books')
     .then(response => {
       setBooks(response.data.payload)
-      setLoading(false)
+      setTimeout(() => {
+        setLoading(false)
+      }, 1500);
     })
     .catch(error => {
       throw new Error(`Unexpected Error: ${error}`)

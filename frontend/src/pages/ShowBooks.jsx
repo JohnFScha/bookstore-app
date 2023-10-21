@@ -15,7 +15,9 @@ export default function ShowBooks() {
     .then(response => {
       setBook(response.data.payload)
       console.log(response)
-      setLoading(false)
+      setTimeout(() => {
+        setLoading(false)
+      }, 1500);
     })
     .catch(error => {
       throw new Error(`Unexpected error: ${error}`)

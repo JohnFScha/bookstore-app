@@ -15,7 +15,9 @@ export default function DeleteBook() {
     setLoading(true)
     axios.delete(`http://localhost:5000/books/${id}`)
     .then(() => {
-      setLoading(false)
+      setTimeout(() => {
+        setLoading(false)
+      }, 1500);
       enqueueSnackbar("Book deleted successfuly!", { variant: "success" });
       navigate('/')
     })

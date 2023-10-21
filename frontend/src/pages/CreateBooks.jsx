@@ -23,7 +23,9 @@ export default function CreateBooks() {
         publishYear: formData.get("publishYear"),
       })
       .then(() => {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false)
+        }, 1500);
         enqueueSnackbar("Book created successfuly!", { variant: "success" });
         navigate("/");
       })

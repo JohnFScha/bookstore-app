@@ -21,7 +21,9 @@ export default function EditBooks() {
     axios.get(`http://localhost:5000/books/${id}`)
     .then(response => {
       setBook(response.data.payload)
-      setLoading(false)
+      setTimeout(() => {
+        setLoading(false)
+      }, 1500);
     })
     .catch(error => {
       setLoading(false)
@@ -56,7 +58,7 @@ export default function EditBooks() {
     <section className="p-4">
       <BackButton />
       <h2 className="text-3xl my-4">Edit Book:</h2>
-      {loading ? <Spinner /> : ''}
+      {loading ? <Spinner /> : 
       <form
         onSubmit={handleSubmit}
         ref={formRef}
@@ -86,7 +88,7 @@ export default function EditBooks() {
           className="border-2 border-gray-500 px-4 py-2 w-full rounded-lg"
         />
         <button type="submit" className="p-2 bg-sky-300 m-8 rounded-lg border-2 border-gray-500">Create book</button>
-      </form>
+      </form>}
     </section>
   );
 }
