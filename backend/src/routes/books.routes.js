@@ -5,6 +5,7 @@ const bookRouter = Router({caseSensitive: false});
 
 // Get all books
 bookRouter.get('/', async (req, res) => {
+  console.log('------- Get all books -------')
   const { limit } = req.query;
 
   try {
@@ -22,6 +23,7 @@ bookRouter.get('/', async (req, res) => {
 
 // Get a book by id
 bookRouter.get('/:id', async (req, res) => {
+  console.log('------- Get book by id -------')
   const { id } = req.params;
 
   try {
@@ -39,6 +41,7 @@ bookRouter.get('/:id', async (req, res) => {
 
 // Create a book
 bookRouter.post("/", async (req, res) => {
+  console.log('------- Create book -------')
   const {title, author, publishYear} = req.body
 
   try {
@@ -64,6 +67,8 @@ bookRouter.post("/", async (req, res) => {
 
 // Update a book
 bookRouter.put("/:id", async (req, res) => {
+  console.log('------- Edit book -------')
+
   const { id } = req.params
   const {title, author, publishYear} = req.body;
   
@@ -89,6 +94,8 @@ bookRouter.put("/:id", async (req, res) => {
 
 // Delete a book by ID
 bookRouter.delete('/:id', async (req, res) => {
+  console.log('------- Delete book -------')
+
   const { id } = req.params;
 
   try {

@@ -13,18 +13,20 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({  // Select specific allowed origins and methods.
-  origin: 'http://localhost:5173',
+  origin: 'http://localhost:3000',
   methods: ['GET', 'PUT', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 })) 
 
 // App
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}`);
+});
+
 connect(process.env.MONGO_DB_CONNECT)
   .then(async () => {
     console.log("Connected to DB");
-    app.listen(PORT, () => {
-      console.log(`App running on port ${PORT}`);
-    });
   })
   .catch((error) => {
     throw new Error(`Error connecting to DB: ${error}`);
