@@ -5,7 +5,7 @@ import { PiBookOpenTextLight } from "react-icons/pi";
 import { BiUserCircle, BiShow } from "react-icons/bi";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
-import { MdOutlineDelete } from "react-icons/md";
+import DeleteButton from "./DeleteButton";
 
 const BookSingleCard = ({ book }) => {
   const [showModal, setShowModal] = useState(false);
@@ -19,6 +19,9 @@ const BookSingleCard = ({ book }) => {
         {book.publishYear}
       </h2>
       <h3 className="my-2 text-gray-500">{book._id}</h3>
+      <div className="flex justify-start items-center gap-x-2">
+        <img src={book.thumbnailUrl} alt={book.title} className="h-[100%] w-[100%] aspect-square" />
+      </div>
       <div className="flex justify-start items-center gap-x-2">
         <PiBookOpenTextLight className="text-red-300 text-2xl" />
         <h4 className="my-1">{book.title.substring(0, 15)}...</h4>
@@ -38,9 +41,7 @@ const BookSingleCard = ({ book }) => {
         <Link to={`/books/edit/${book._id}`}>
           <AiOutlineEdit className="text-2xl text-yellow-600 hover:text-black" />
         </Link>
-        <Link to={`/books/delete/${book._id}`}>
-          <MdOutlineDelete className="text-2xl text-red-600 hover:text-black" />
-        </Link>
+        <DeleteButton book={book}/>
       </div>
       {
         showModal && (

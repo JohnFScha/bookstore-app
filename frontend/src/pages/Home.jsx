@@ -11,7 +11,7 @@ export default function Home() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showType, setShowType] = useState('table');
-
+  
   useEffect(() => {
     setLoading(true);
     axios.get('http://localhost:5000/books')
